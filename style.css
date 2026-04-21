@@ -51,7 +51,7 @@ body {
 
 .app-header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     padding-bottom: 1rem;
     border-bottom: 1px solid var(--card-border);
@@ -68,6 +68,8 @@ body {
 
 .actions {
     display: flex;
+    justify-content: center;
+    width: 100%;
     gap: 1rem;
     align-items: center;
 }
@@ -167,17 +169,7 @@ body {
     align-items: stretch;
 }
 
-@media (max-width: 768px) {
-    .scoreboard {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto auto;
-    }
 
-    .center-controls {
-        order: -1;
-        margin-bottom: 1rem;
-    }
-}
 
 .team-card {
     background: var(--card-bg);
@@ -537,4 +529,115 @@ body {
     background: var(--team2-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+/* Responsividade / Mobile */
+@media (max-width: 768px) {
+    body {
+        align-items: flex-start;
+    }
+
+    .app-container {
+        padding: 1.5rem 1rem;
+        gap: 1.5rem;
+    }
+
+    .app-header {
+        flex-direction: column;
+        gap: 1.25rem;
+        align-items: center;
+    }
+
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .actions {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 100%;
+        gap: 0.75rem;
+    }
+
+    .scoreboard {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 1.5rem;
+    }
+
+    .center-controls {
+        order: -1;
+        margin-bottom: 0.5rem;
+    }
+
+    .team-card {
+        padding: 1.5rem;
+    }
+
+    .team-header {
+        margin-bottom: 1.5rem;
+    }
+
+    .score-display {
+        font-size: 6rem;
+        margin: 0.5rem 0 2rem;
+    }
+
+    .btn-truco {
+        width: 100px;
+        height: 100px;
+    }
+
+    .btn-truco span {
+        font-size: 3rem;
+    }
+
+    .truco-label {
+        font-size: 0.85rem;
+    }
+
+    .btn {
+        padding: 0.6rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    .btn-score {
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+
+    .modal-content {
+        padding: 2rem 1.5rem;
+        width: 90%;
+    }
+}
+
+@media (max-width: 480px) {
+    .actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .max-score-selector {
+        justify-content: center;
+    }
+
+    .btn-selector {
+        flex: 1;
+        text-align: center;
+    }
+
+    .score-display {
+        font-size: 5rem;
+    }
+
+    .team-name {
+        font-size: 1.3rem;
+        width: 50%;
+    }
+
+    .victories-badge {
+        font-size: 1rem;
+        padding: 0.4rem 0.6rem;
+    }
 }
