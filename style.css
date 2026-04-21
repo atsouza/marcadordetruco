@@ -525,3 +525,16 @@ body {
         transform: scale(1);
     }
 }
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.modal-content.reset-content h2 {
+    background: var(--team2-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}

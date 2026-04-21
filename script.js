@@ -43,7 +43,10 @@ const elements = {
     modal: document.getElementById('victory-modal'),
     modalTitle: document.getElementById('victory-title'),
     modalMessage: document.getElementById('victory-message'),
-    btnNextMatch: document.getElementById('btn-next-match')
+    btnNextMatch: document.getElementById('btn-next-match'),
+    resetModal: document.getElementById('reset-modal'),
+    btnConfirmReset: document.getElementById('btn-confirm-reset'),
+    btnCancelReset: document.getElementById('btn-cancel-reset')
 };
 
 // Salva o estado atual no histórico
@@ -164,19 +167,28 @@ function undo() {
     }
 }
 
+// Mostra o modal de reiniciar
+function showResetModal() {
+    elements.resetModal.classList.add('show');
+}
+
+// Fecha o modal de reiniciar
+function closeResetModal() {
+    elements.resetModal.classList.remove('show');
+}
+
 // Zera todas as pontuações e vitórias
 function resetAll() {
-    if (confirm("Tem certeza que deseja zerar todas as pontuações e partidas ganhas?")) {
-        saveToHistory();
-        appState.team1.score = 0;
-        appState.team1.victories = 0;
-        appState.team1.name = "Nós";
-        appState.team2.score = 0;
-        appState.team2.victories = 0;
-        appState.team2.name = "Eles";
-        appState.incrementValue = 1;
-        updateUI();
-    }
+    saveToHistory();
+    appState.team1.score = 0;
+    appState.team1.victories = 0;
+    appState.team1.name = "Nós";
+    appState.team2.score = 0;
+    appState.team2.victories = 0;
+    appState.team2.name = "Eles";
+    appState.incrementValue = 1;
+    updateUI();
+    closeResetModal();
 }
 
 // Mostra o modal de vitória
@@ -225,10 +237,12 @@ elements.team2.btnScore.addEventListener('click', () => addScore('team2'));
 
 elements.trucoBtn.addEventListener('click', toggleTruco);
 elements.undoBtn.addEventListener('click', undo);
-elements.resetBtn.addEventListener('click', resetAll);
+elements.resetBtn.addEventListener('click', showResetModal);
 elements.btnMax12.addEventListener('click', () => setMaxScore(12));
 elements.btnMax15.addEventListener('click', () => setMaxScore(15));
 elements.btnNextMatch.addEventListener('click', nextMatch);
+elements.btnConfirmReset.addEventListener('click', resetAll);
+elements.btnCancelReset.addEventListener('click', closeResetModal);
 
 // Event Listeners para edição de nomes
 elements.team1.nameInput.addEventListener('input', (e) => updateTeamName('team1', e.target.value));
